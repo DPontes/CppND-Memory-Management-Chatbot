@@ -44,7 +44,7 @@ ChatBot::~ChatBot()
 }
 
 // copy constructor
-ChatBot::ChatBot(const Chatbot &source)
+ChatBot::ChatBot(const ChatBot &source)
 {
     *_image    = *source._image;
     _chatLogic = source._chatLogic;
@@ -56,7 +56,7 @@ ChatBot::ChatBot(const Chatbot &source)
 }
 
 // move constructor
-Chatbot::Chatbot(const Chatbot &&source)
+ChatBot::ChatBot(const ChatBot &&source)
 {
     _image = source._image;
     _chatLogic = source._chatLogic;
