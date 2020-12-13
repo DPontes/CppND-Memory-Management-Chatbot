@@ -8,13 +8,6 @@ GraphNode::GraphNode(int id)
 
 GraphNode::~GraphNode()
 {
-    //// STUDENT CODE
-    ////
-
-    delete _chatBot; 
-
-    ////
-    //// EOF STUDENT CODE
 }
 
 void GraphNode::AddToken(std::string token)
@@ -58,3 +51,4 @@ GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
     ////
     //// EOF STUDENT CODE
 }
+
