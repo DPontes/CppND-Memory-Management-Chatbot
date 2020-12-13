@@ -30,4 +30,19 @@ No more segmentation fault when exiting the program
 
 ### Implementation
 
-- `src/chatgui.cpp`
+- `src/chatgui.cpp`: `ChatBotPanelDialog::ChatBotPanelDialog(*parent, id)`
+
+  Changed the type of `_chatLogic` to be a `unique_ptr` class of type `ChatLogic` in order for it to be an exclusive resource to class `ChatBotPanelDialog`. Given that the type of `_chatLogic` was changed from `new` to `unique_ptr`, it is also necessary to remove the call of `delete` inside the `~ChatBotPanelDialog` destructor.
+
+- `src/chatgui.h`: `ChatBotDialog`
+
+  Changed the declaration type of `_chatLogic`. Also, given that the type of the pointer is changed, it is used `_chatLogic.get()` in order to correctly return the stored pointer.
+
+### Result
+
+No changes are observed in the functionality of the program, but the ownership of `_chatLogic` is unique.
+
+## Task 2: The Rule of Five
+
+### Implementation
+
