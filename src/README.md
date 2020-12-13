@@ -25,3 +25,9 @@ The base code in the repo is forked from Udacity's C++ Course ([repo](https://gi
 ### Result
 
 No more segmentation fault when exiting the program
+
+## Task 1: Exclusive Ownership of `_chatLogic`
+
+### Implementation
+
+- `src/chatgui.cpp`
