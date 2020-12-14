@@ -46,3 +46,22 @@ No changes are observed in the functionality of the program, but the ownership o
 
 ### Implementation
 
+  In order to comply with the Rule Of Five, the `copy constructor`,  `move constructor`, `copy assignment operator` and `move assignment operator` were introduced. The implementation was based on the `Rule Of Five` section from the `Move Semantics` lesson. Some adaptations were done based on comments in the Knowledge Section.
+
+- `src/chatbot.cpp`: `ChatBot::ChatBot(const ChatBot &source)`
+
+  **Copy Constructor**: TBD
+
+- `src/chatbot.cpp`: `ChatBot::ChatBot(const ChatBot &&source)`
+
+  **Move Constructor**: TBD
+
+- `src/chatbot.cpp`: `ChatBot& ChatBot::operator=(const ChatBot &source)`
+
+  **Copy Assignment Operator**: TBD
+
+- `src/chatbot.cpp`: `ChatBot& ChatBot::operator=(const ChatBot &&source)`
+
+  **Move Assignment Operator**: TBD
+
+
