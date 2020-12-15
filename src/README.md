@@ -64,4 +64,20 @@ No changes are observed in the functionality of the program, but the ownership o
 
   **Move Assignment Operator**: TBD
 
+## Task 3: Exclusive Ownership of `_nodes`
 
+### Implementation
+
+- `src/chatlogic.h`: `class ChatLogic`
+
+  Declaration for vector of raw pointers `_nodes` was transformed into a vector of `unique_ptr` of type `GraphNode`.
+
+- `src/chatlogic.cpp`: `ChatLogic()::~ChatLogic()`
+
+  Given that we are now working with a smart pointer of type `unique_ptr` it is no longer necessary to explicitly delete the pointer when destroying class `ChatLogic`, this is handled by the `unique_ptr` class.
+
+- `src/chatlogic.cpp`: `ChatLogic::LoadAnswerGraphFromFile(filename)`
+
+  In the declaration and initialization of `newNode`, `parentNode` and `childNode`, a raw pointer `GraphNode *node` was returned by the `std::find_if` function.. This was replaced with the correct `unique_ptr` type instead. Given then that the variables mentioned previously are now `unque_ptr`s, the calls of `SetChildNode` and `SetParentNode` to the new edge must use the correct function of `.get()` used for `unique_ptr`s.
+
+  The assignment of the current node to `root` is also changed to use the correct functionality to access the `unique_ptr`. (solution for this one referred [here](https://knowledge.udacity.com/questions/120851))
