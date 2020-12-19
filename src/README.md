@@ -81,3 +81,25 @@ No changes are observed in the functionality of the program, but the ownership o
   In the declaration and initialization of `newNode`, `parentNode` and `childNode`, a raw pointer `GraphNode *node` was returned by the `std::find_if` function.. This was replaced with the correct `unique_ptr` type instead. Given then that the variables mentioned previously are now `unque_ptr`s, the calls of `SetChildNode` and `SetParentNode` to the new edge must use the correct function of `.get()` used for `unique_ptr`s.
 
   The assignment of the current node to `root` is also changed to use the correct functionality to access the `unique_ptr`. (solution for this one referred [here](https://knowledge.udacity.com/questions/120851))
+
+## Task 4: Moving Smart Pointers
+
+### Implementation
+
+  - `src/graphnode.h`: `class GraphNode`
+
+  Declaration for vector of raw pointers `_childEdges` was transformed into a vector of `unique_ptr` of type `GraphEdge`, as these are data handles owned by GraphNode.
+
+  - `src/graphnode.cpp`: `GraphNode::AddEdgeToChildNode(edge)`
+
+  This function is called in `ChatLogic::LoadAnswerGraphFromFile(filename)` where the passed variable `edge` is of type `unique_ptr` and as such its declaration is changed as well as it's moved to `_childedges` with the `std::move` function.
+
+  - `src/chatlogic.h`: `class chatLogic`
+
+  Declaration for vector of raw pointers `_edges` was transformed into a vector of `unique_ptr` of type `GraphEdge`.
+
+  - `src/chatlogic.cpp`: `ChatLogic::LoadAnswerGraphFromFile(std::string filename)`
+
+  the variable `edge` becomes a unique pointer, as required by this task. Given that, the storing of child and parent node need to be adapted to correctly call the unique pointer, i.e., use `.get()` and `std::move(edge)` respectively.
+
+
