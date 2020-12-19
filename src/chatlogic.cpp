@@ -25,12 +25,6 @@ ChatLogic::~ChatLogic()
 {
     // delete chatbot instance
     delete _chatBot;
-
-    // delete all edges
-    for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
-    {
-        delete *it;
-    }
 }
 
 template <typename T>
@@ -40,7 +34,7 @@ void ChatLogic::AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T 
     auto token = tokens.begin();
     while (true)
     {
-        token = std::find_if(token, tokens.end(), [&tokenID](const std::pair<std::string, std::string> &pair) { return pair.first == tokenID;; });
+        token = std::find_if(token, tokens.end(), [&tokenID](const std::pair<std::string, std::string> &pair) { return pair.first == tokenID; });
         if (token != tokens.end())
         {
             element.AddToken(token->second); // add new keyword to edge
