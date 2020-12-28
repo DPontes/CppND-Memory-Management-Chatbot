@@ -69,7 +69,7 @@ ChatBot& ChatBot::operator=(const ChatBot &source)
         return *this;
     }
 
-    delete image;
+    delete _image;
 
     _chatLogic = source._chatLogic;
     _rootNode  = source._rootNode;
