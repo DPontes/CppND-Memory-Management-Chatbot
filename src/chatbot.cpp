@@ -73,10 +73,10 @@ ChatBot& ChatBot::operator=(const ChatBot &source)
 
     delete _image;
 
+    _image = new wxBitmap(*source._image);
     _chatLogic = source._chatLogic;
     _chatLogic->SetChatbotHandle(this);
     _rootNode  = source._rootNode;
-    _image = *source._image;
 
     std::cout << "ChatBot Copy Assignment Operator" << std::endl;
 
